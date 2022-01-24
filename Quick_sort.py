@@ -25,8 +25,6 @@ def quick_sort(array):
 print(quick_sort(array))
 
 
-
-
 tail1 = array[1:]
 pivot1 = array[0]
 
@@ -34,3 +32,35 @@ pivot1 = array[0]
 abc = [x for  x in tail1 if x <= pivot1]
 
 print(abc)
+
+
+
+def quick_myself(array):
+    if len(array) <= 1:
+        return
+    
+    pivot = array[0]
+    tail = array[1:]
+    
+    left_side = [x for x in array if x <= pivot]
+    right_side = [x for x in array if x >= pivot]
+    
+    return quick_myself(left_side) + [pivot] + quick_myself(right_side)
+
+
+
+# 계수 정렬 코드
+
+array  = [7,5,9,0,3,1,6,2,9,1,4,8,0,5,2]
+count  = [0] * (max(array)+1)
+
+
+for i in range(len(array)):
+    count[array[i]] += 1
+
+for i in range(len(count)):
+    for j in range(count[i]):
+        print(i, end = ' ')
+        
+
+
